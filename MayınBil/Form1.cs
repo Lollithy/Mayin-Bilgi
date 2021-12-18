@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace MayınBil
 {
@@ -63,11 +64,13 @@ namespace MayınBil
             bool state = (bool)clicked.Tag;
             if (state == true) 
             {
-                  clicked.BackColor = Color.Red;
+                clicked.BackColor = Color.DarkRed;
                 Questions question = new Questions();
                 question.Show();
-                this.Hide();
-                GameOver();
+                score++;
+                textBox1.Text = score.ToString();
+                clicked.Enabled = false;
+
             }
 
             else 
@@ -75,6 +78,7 @@ namespace MayınBil
                 clicked.BackColor = Color.Green;
                 score++;
                 textBox1.Text = score.ToString();
+                clicked.Enabled = false;
             }
 
         }
@@ -116,6 +120,11 @@ namespace MayınBil
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
